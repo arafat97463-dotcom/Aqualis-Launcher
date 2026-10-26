@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/"
+title = "Aqualis Launcher"
+description = "A premium Android Minecraft Java launcher companion and iOS companion app for managing supported Microsoft profiles, discovering mods, tuning performance settings, and safeguarding game data."
+version = "1.0.0"
+id = "artifacts/aqualis-launcher"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/" ]
+localPort = 22427
+
+[services.development]
+run = "pnpm --filter @workspace/aqualis-launcher run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/aqualis-launcher", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/aqualis-launcher", "run", "serve" ]
+
+[services.env]
+PORT = "22427"
+BASE_PATH = "/"
